@@ -1,2 +1,3 @@
 # attenua
-Reducing the load on the programmer.
+
+I'll start working on it soon.
