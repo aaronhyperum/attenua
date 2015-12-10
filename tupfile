@@ -1,0 +1,21 @@
+# %B = base filename without extension
+# %f = inputs, %o = outputs
+
+# -- Definitions -- #
+
+!compile_attenua = |> g++ -Wall -Iinclude -c %f -o %o  |>
+!compile = |> g++ -Wall -Iinclude -c %f -o %o |>
+!archive = |> ar crs %o %f |>
+!link = |> g++ %f  -o %o  |>
+
+# -- Build: Library -- #
+
+: foreach attenua/src/*.cpp |> !compile_attenua |> attenua/build/%B.o
+: attenua/build/*.o |> !archive |> attenua/bin/libattenua.a
+
+
+# -- Build: Test Suite -- #
+
+: foreach test/src/*.cpp |> !compile |> test/build/%B.o
+
+: test/build/experimental.o attenua/bin/libattenua.a |> !link  |> test/bin/experimental

@@ -1,3 +1,7 @@
 # attenua
 
-I'll start working on it soon.
+Game engine in-progress.
+
+Dependencies:
+
+Tup (Build System)
