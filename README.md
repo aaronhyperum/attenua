@@ -2,6 +2,6 @@
 
 Game engine in-progress.
 
-Dependencies:
+This project depends on `premake5` and `ninja`.
 
-Tup (Build System)
+To build, type `premake5 ninja` from root, then type `ninja -C pre`.

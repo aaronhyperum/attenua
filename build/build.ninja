@@ -1,0 +1,19 @@
+# solution build file
+# generated with premake ninja
+
+# build projects
+subninja ./build_attenua_debug.ninja
+subninja ./build_attenua_release.ninja
+subninja ./build_test-experimental_debug.ninja
+subninja ./build_test-experimental_release.ninja
+
+# targets
+build test-experimental_release: phony ../bin/test-experimental/test-experimental 
+build attenua_debug: phony ../bin/attenua/libattenua.a 
+build attenua_release: phony ../bin/attenua/libattenua.a 
+build test-experimental_debug: phony ../bin/test-experimental/test-experimental 
+build release: phony ../bin/attenua/libattenua.a ../bin/test-experimental/test-experimental 
+build debug: phony ../bin/attenua/libattenua.a ../bin/test-experimental/test-experimental 
+
+# default target
+default test-experimental_debug

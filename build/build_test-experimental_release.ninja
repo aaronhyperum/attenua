@@ -1,0 +1,31 @@
+# project build file
+# generated with premake ninja
+
+ninja_required_version = 1.6
+
+# core rules for release
+rule cc
+  command = clang -O2 -DNDEBUG -I../lib -I../src/test-experimental -MMD -MF $out.d -c -o $out $in
+  description = cc $out
+  depfile = $out.d
+  deps = gcc
+
+rule cxx
+  command = clang++ -O2 -DNDEBUG -I../lib -I../src/test-experimental -MMD -MF $out.d -c -o $out $in
+  description = cxx $out
+  depfile = $out.d
+  deps = gcc
+
+rule ar
+  command = ar rcs $out $in
+  description = ar $out
+
+rule link
+  command = clang++ -o $out $in  
+  description = link $out
+
+# build files
+build obj/release/test-experimental/experimental.o: cxx /Users/Home/attenua/src/test-experimental/experimental.cpp
+
+# link executable
+build ../bin/test-experimental/test-experimental: link obj/release/test-experimental/experimental.o  ../bin/attenua/libattenua.a

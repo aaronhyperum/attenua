@@ -1,0 +1,5 @@
+# ninja log v5
+0	916	0	obj/debug/test-experimental/experimental.o	fb8ab715549e6892
+1	966	0	obj/debug/attenua/attenua.o	1f82d029441cf7e1
+966	988	0	../bin/attenua/libattenua.a	cf8455cc1b9bbcc3
+988	1064	0	../bin/test-experimental/test-experimental	e2112708830465a6

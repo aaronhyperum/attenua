@@ -1,0 +1,31 @@
+# project build file
+# generated with premake ninja
+
+ninja_required_version = 1.6
+
+# core rules for release
+rule cc
+  command = clang -O2 -DNDEBUG -I../lib -I../src/attenua -MMD -MF $out.d -c -o $out $in
+  description = cc $out
+  depfile = $out.d
+  deps = gcc
+
+rule cxx
+  command = clang++ -O2 -DNDEBUG -I../lib -I../src/attenua -MMD -MF $out.d -c -o $out $in
+  description = cxx $out
+  depfile = $out.d
+  deps = gcc
+
+rule ar
+  command = ar rcs $out $in
+  description = ar $out
+
+rule link
+  command = clang++ -o $out $in  
+  description = link $out
+
+# build files
+build obj/release/attenua/attenua.o: cxx /Users/Home/attenua/src/attenua/attenua.cpp
+
+# link static lib
+build ../bin/attenua/libattenua.a: ar obj/release/attenua/attenua.o 
